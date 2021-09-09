@@ -1,7 +1,9 @@
 version: '3.4'
 services:
   netbox: &netbox
-    image: netboxcommunity/netbox:${VERSION-v3.0}
+    image: netboxcommunity/netbox:latest
+    ports:
+      - 16004:8080
     depends_on:
     - postgres
     - redis
