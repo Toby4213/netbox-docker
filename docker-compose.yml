@@ -2,13 +2,13 @@ version: '3.4'
 services:
   netbox: &netbox
     image: netboxcommunity/netbox:${VERSION-v3.0}
-    ports:
-    - 16004:8080
     depends_on:
     - postgres
     - redis
     - redis-cache
     - netbox-worker
+    ports:
+    - 16005:8080
     env_file: env/netbox.env
     user: '101'
     volumes:
@@ -22,6 +22,8 @@ services:
     <<: *netbox
     depends_on:
     - redis
+    ports:
+    - 16006:8080
     entrypoint:
     - /opt/netbox/venv/bin/python
     - /opt/netbox/netbox/manage.py
