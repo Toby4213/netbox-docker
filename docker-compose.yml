@@ -7,8 +7,6 @@ services:
     - redis
     - redis-cache
     - netbox-worker
-    ports:
-    - 16005:8080
     env_file: env/netbox.env
     user: '101'
     volumes:
@@ -22,8 +20,6 @@ services:
     <<: *netbox
     depends_on:
     - redis
-    ports:
-    - 16006:8080
     entrypoint:
     - /opt/netbox/venv/bin/python
     - /opt/netbox/netbox/manage.py
